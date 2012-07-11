@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <base href='/js-cov/' />
+  <link rel="stylesheet" href="/test/lib/mocha.css" />
+  <script src="/js/lib/require-jquery.js"></script>
+  
+  <script src="/test/lib/expect.js"></script>
+  <script src="/test/lib/mocha.js"></script>
+
+  <script>
+    mocha.setup('bdd');
+
+    var specs = [
+      '/test/models/todo_test.js'
+    ];
+
+    require.config({
+        baseUrl: '/js-cov/'
+      , paths: {
+            underscore: '/js/lib/underscore'
+          , backbone: '/js/lib/backbone'
+        }
+    });
+
+    require(specs, function() {
+      mocha
+        .run();
+    });
+  </script>
+</head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>
